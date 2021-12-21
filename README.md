@@ -1,6 +1,6 @@
-# CSV Generator
+# OmbroCSV
 
-```pip install csv-gen```
+```pip install ombrocsv```
 
 A **fast random CSV generator** with a powerful yet simple template system that
 can be used either as a standalone Command line tool or easily integrated 
@@ -85,10 +85,10 @@ Create a config file and use this package as a
 convenient way to generate CSV files on the fly.
 
 #### Generate file and output to terminal
-``` csvgen [config file] [number of lines to generate] ```
+``` ombrocsv [config file] [number of lines to generate] ```
 
 #### Generate file and output to file
-``` csvgen [config file] [number of lines to generate] [output file]```
+``` ombrocsv [config file] [number of lines to generate] [output file]```
 
 #### Config file
 ```

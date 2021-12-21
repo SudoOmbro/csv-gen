@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 # This call to setup() does all the work
 setup(
-    name="csv-gen",
+    name="ombrocsv",
     version="1.0.0",
     description="Generate random CSV files",
     long_description=README,
@@ -20,9 +20,7 @@ setup(
     license="MIT",
     classifiers=[
         "License :: OSI Approved :: MIT License",
-        "Programming Language :: Python :: 3.6",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.9",
     ],
     packages=["csvgen"],
@@ -30,7 +28,7 @@ setup(
     install_requires=[],
     entry_points={
         "console_scripts": [
-            "csvgen=csvgen.__main__:main",
+            "ombrocsv=csvgen.__main__:main",
         ]
     },
 )
