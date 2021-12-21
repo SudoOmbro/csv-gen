@@ -7,7 +7,15 @@ class CsvGenerator:
 
     _RAND_UTILS = RandUtils()
 
-    def __init__(self, separator: str, delimiter: str, headers: bool, schema: List[dict], delimit_all: bool = False):
+    def __init__(
+            self,
+            separator: str,
+            delimiter: str,
+            headers: bool,
+            schema: List[dict],
+            delimit_all: bool = False,
+            randutils_override: RandUtils or None = None
+    ):
         self.separator = separator
         self.delimiter = delimiter
         self.headers = headers
@@ -16,6 +24,8 @@ class CsvGenerator:
         self._schema_string = self._get_schema_string()
         self._schema_args = self._get_schema_args()
         self.lines: List[str] = []
+        if randutils_override:
+            self._RAND_UTILS = randutils_override
 
     def _get_schema_string(self) -> str:
         if self.delimit_all:
