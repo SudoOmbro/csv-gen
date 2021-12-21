@@ -1,0 +1,19 @@
+{
+  "schema": [{
+      "type": "email",
+      "header": "Email"
+    }, {
+      "type": "name",
+      "header": "Name"
+    }, {
+      "type": "name",
+      "header": "Surname"
+    }, {
+      "type": "date",
+      "header": "DateOfBirth"
+    }, {
+      "type": "CustomerID",
+      "header": "number"
+    }
+  ]
+}
