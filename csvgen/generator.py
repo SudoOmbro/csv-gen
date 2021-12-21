@@ -48,11 +48,15 @@ class CsvGenerator:
         return self._schema_string.format(*[f.generate() for f in self._schema_args])
 
     def generate(self, lines: int):
-        """ generates the lines of the CSV file """
+        """ generates the desired amount of lines for the CSV file """
         if self.headers:
             self.lines.append(self._write_headers())
         for _ in range(lines):
             self.lines.append(self._write_line())
+
+    def clear(self):
+        """ clears the generated lines """
+        self.lines.clear()
 
     def write(self, result: IO):
         """ writes the lines of the CSV file into an IO buffer """

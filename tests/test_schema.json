@@ -13,7 +13,7 @@
       "header": "DateOfBirth"
     }, {
       "type": "CustomerID",
-      "header": "number"
+      "header": "string"
     }
   ]
 }

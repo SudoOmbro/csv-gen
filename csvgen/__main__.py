@@ -7,7 +7,7 @@ from csvgen.generator import CsvGenerator
 def main():
     args_num: int = len(sys.argv)
     if args_num < 3:
-        print("usage: csv-gen [schema file] [lines number] [(optional) filename]")
+        print("usage: csv-gen [config file] [lines number] [(optional) filename]")
         return
     with open(sys.argv[1], "r") as file:
         loaded_config: dict = json.load(file)
