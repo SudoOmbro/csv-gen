@@ -4,6 +4,7 @@ from csvgen.random_utils import RandUtils, RandomBase
 
 
 class CsvGenerator:
+
     _RAND_UTILS = RandUtils()
 
     def __init__(self, separator: str, delimiter: str, headers: bool, schema: List[dict], delimit_all: bool = False):
