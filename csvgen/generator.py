@@ -14,26 +14,17 @@ class CsvGenerator:
             headers: bool,
             schema: List[dict],
             delimit_all: bool = False,
-            randutils_override: RandUtils or None = None
+            randutils_override: RandUtils or None = None,
     ):
         self.separator = separator
         self.delimiter = delimiter
         self.headers = headers
         self.schema = schema
         self.delimit_all = delimit_all
-        self._schema_string = self._get_schema_string()
         self._schema_args = self._get_schema_args()
         self.lines: List[str] = []
         if randutils_override:
             self._RAND_UTILS = randutils_override
-
-    def _get_schema_string(self) -> str:
-        if self.delimit_all:
-            temp_list: List[str] = []
-            for _ in self.schema:
-                temp_list.append(f"{self.delimiter}{{}}{self.delimiter}")
-            return f"{self.separator}".join(temp_list) + "\n"
-        return f"{self.separator}".join("{}" for _ in range(len(self.schema))) + "\n"
 
     def _get_schema_args(self) -> List[RandomBase]:
         result: List[RandomBase] = []
@@ -52,10 +43,11 @@ class CsvGenerator:
                 result += f"{schema_element['header']}{self.separator}"
             else:
                 result += f"{arg.header()}{self.separator}"
-        return result[:-1] + "\n"
+        return result[:-1]
 
     def _write_line(self) -> str:
-        return self._schema_string.format(*[f.generate() for f in self._schema_args])
+        # return self._schema_string.format(*[f.generate() for f in self._schema_args])
+        return self.separator.join([f.generate() for f in self._schema_args])
 
     def generate(self, lines: int):
         """ generates the desired amount of lines for the CSV file """
@@ -70,12 +62,13 @@ class CsvGenerator:
 
     def write(self, result: IO):
         """ writes the lines of the CSV file into an IO buffer """
-        for line in self.lines:
-            result.write(line.encode())
+        # for line in self.lines:
+        #     result.write(line.encode())
+        result.write(("\n".join(self.lines)).encode())
 
     def __str__(self):
         result: str = f"CSV Generator {self.__hash__()}:\n"
         for element in self.__dict__:
             if element[0] != "_":
                 result += f"{element}: {self.__dict__[element]}\n"
-        return result + f"schema string: {self._schema_string}"
+        return result
